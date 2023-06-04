@@ -1,14 +1,14 @@
-let playerScore;
-let computerScore;
+let playerScore = 0;
+let computerScore = 0;
 const playOption = ["rock","paper","scissors"];
-let playerSelection = getPlayerChoice();
-let computerSelection = getComputerChoice();
+let playerChoice;
+let computerChoice;
 
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random()*(2 - 0 +1));
     console.log("Computer picked: " + playOption[randomNumber]);
-    console.log("=========================")
+    console.log("=========================");
     return playOption[randomNumber]; 
 }
 
@@ -30,25 +30,51 @@ function playRound(playerSelection, computerSelection) {
     if(playerSelection === computerSelection) {
         return ("Game even! " + playerSelection + " vs " + computerSelection);
     }
+    //lose conditions for player
     else if(playerSelection === playOption[0] && computerSelection === playOption[1]) {
-        computerScore++;
+        ++computerScore;
         return ("You Lose! " + computerSelection + " beats " + playerSelection);
     }
     else if(playerSelection === playOption[2] && computerSelection === playOption[0]) {
-        computerScore++;
+        ++computerScore;
         return ("You Lose! " + computerSelection + " beats " + playerSelection);
     }
+    else if(playerSelection === playOption[1] && computerSelection === playOption[2]) {
+        ++computerScore;
+        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+    }
+    //win conditions for player
     else if(playerSelection === playOption[1] && computerSelection === playOption[0]) {
-        playerScore++;
+        ++playerScore;
         return ("You Win! " + playerSelection + " beats " + computerSelection);
     }
     else if(playerSelection === playOption[0] && computerSelection === playOption[2]) {
-        playerScore++;
+        ++playerScore;
         return ("You Win! " + playerSelection + " beats " + computerSelection);
+    }
+    else if(playerSelection === playOption[2] && computerSelection === playOption[1]) {
+        ++computerScore;
+        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+    }
+    else {
+        console.log("no case");
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (let i = 0; i < 5; i++) {
+    playerChoice = getPlayerChoice();
+    console.clear();
+    computerChoice = getComputerChoice();
+    console.log(playRound(playerChoice,computerChoice));
+    console.log("=========================")
+    console.log("Player: " + playerScore + " Computer: " + computerScore);
+
+    }   
+}
+
+game();
+
 
 
 
