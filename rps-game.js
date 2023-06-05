@@ -73,7 +73,52 @@ function game() {
     }   
 }
 
-game();
+// game();
+
+const mainContainer = document.createElement("div");
+mainContainer.setAttribute("id", "mainContainer");
+document.body.prepend(mainContainer);
+const rockButton = document.createElement("button");
+rockButton.textContent = "Rock";
+mainContainer.appendChild(rockButton);
+const paperButton = document.createElement("button");
+paperButton.textContent = "Paper";
+mainContainer.appendChild(paperButton);
+const scissorsButton = document.createElement("button");
+scissorsButton.textContent = "Scissors";
+mainContainer.appendChild(scissorsButton);
+
+
+
+
+rockButton.addEventListener("click", function() {
+    playerChoice = "rock";
+    const resultBox = document.createElement("div");
+    if(document.body.contains(document.getElementById("resultBox"))) {
+        console.log("resultBox does exist");
+    }
+    document.body.appendChild(resultBox);
+    resultBox.setAttribute("id","resultBox");
+    resultBox.textContent = playRound(playerChoice, getComputerChoice());
+});
+
+scissorsButton.addEventListener("click", function() {
+    playerChoice = "scissors";
+    console.log(playRound(playerChoice, getComputerChoice()));
+
+});
+
+paperButton.addEventListener("click", function() {
+    playerChoice = "paper";
+    console.log(playRound(playerChoice, getComputerChoice()));
+
+});
+
+
+
+
+
+
 
 
 
