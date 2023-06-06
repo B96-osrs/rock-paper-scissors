@@ -26,7 +26,7 @@ function getPlayerChoice() {
 
 }
 
-function playRound(playerSelection, computerSelection) {
+function determineRoundWinner(playerSelection, computerSelection) {
     if(playerSelection === computerSelection) {
         return ("Game even! " + playerSelection + " vs " + computerSelection);
     }
@@ -61,19 +61,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-    playerChoice = getPlayerChoice();
-    console.clear();
-    computerChoice = getComputerChoice();
-    console.log(playRound(playerChoice,computerChoice));
-    console.log("=========================")
-    console.log("Player: " + playerScore + " Computer: " + computerScore);
-
-    }   
-}
-
-
 function checkForWinCondition(playerScore, computerScore) {
     return (playerScore === 5 || computerScore === 5);
 
@@ -91,125 +78,65 @@ function startNewGame() {
     }
 }
 
+function displayEndResult() {
 
+    const winMessageBox = document.createElement("div");
+    document.body.appendChild(winMessageBox);
+    winMessageBox.setAttribute("id" , "winMessageBox");
+    if(playerScore > computerScore) {
+        winMessageBox.textContent = "Game won!";
+    }
+    else {
+        winMessageBox.textContent = "Game lost!";
+    }
 
+}
 
+function displayRoundResult() {
+    const resultBox = document.createElement("div");
+    document.body.appendChild(resultBox);
+    resultBox.setAttribute("id","resultBox");
+    resultBox.textContent = determineRoundWinner(playerChoice, getComputerChoice());
 
+}
 
+function updateScore() {
+    let scoreBox = document.getElementById("scoreBox");
+    scoreBox.textContent = "Score: ";
+    scoreBox.textContent += ("You: " + playerScore + " Computer: " + computerScore);
 
-// game();
+}
 
-const mainContainer = document.createElement("div");
-mainContainer.setAttribute("id", "mainContainer");
-document.body.prepend(mainContainer);
-const rockButton = document.createElement("button");
-rockButton.textContent = "Rock";
-mainContainer.appendChild(rockButton);
-const paperButton = document.createElement("button");
-paperButton.textContent = "Paper";
-mainContainer.appendChild(paperButton);
-const scissorsButton = document.createElement("button");
-scissorsButton.textContent = "Scissors";
-mainContainer.appendChild(scissorsButton);
+function playRound(buttonChoice) {
+    if(playerScore === 5 || computerScore === 5) {
+        startNewGame();
+    }
+    if(document.body.contains(document.getElementById("resultBox"))) {
+        document.getElementById("resultBox").remove();
+    }   
+    playerChoice = buttonChoice;
+    displayRoundResult();
+    updateScore();
+    if(checkForWinCondition(playerScore,computerScore) === true) {
+        displayEndResult();
+    }
+}
 
 
 
 
 rockButton.addEventListener("click", function() {
-    if(playerScore === 5 || computerScore === 5) {
-        startNewGame();
-    }
+    playRound("rock");
 
-    if(document.body.contains(document.getElementById("resultBox"))) {
-        document.getElementById("resultBox").remove();
-    }
-    
-    playerChoice = "rock";
-    const resultBox = document.createElement("div");
-    document.body.appendChild(resultBox);
-    resultBox.setAttribute("id","resultBox");
-    resultBox.textContent = playRound(playerChoice, getComputerChoice());
-    let scoreBox = document.getElementById("scoreBox");
-    scoreBox.textContent = "Score: ";
-    scoreBox.textContent += ("Player: " + playerScore + " Computer: " + computerScore);
-    console.log(checkForWinCondition(playerScore,computerScore));
-    if(checkForWinCondition(playerScore,computerScore) === true) {
-        console.log("winMessageBox appeared");
-        const winMessageBox = document.createElement("div");
-        document.body.appendChild(winMessageBox);
-        winMessageBox.setAttribute("id" , "winMessageBox");
-        if(playerScore > computerScore) {
-            winMessageBox.textContent = "Game won!";
-        }
-        else {
-            winMessageBox.textContent = "Game lost!";
-        }
-    }
 });
 
 paperButton.addEventListener("click", function() {
-    if(playerScore === 5 || computerScore === 5) {
-        startNewGame();
-    }
-
-    if(document.body.contains(document.getElementById("resultBox"))) {
-        document.getElementById("resultBox").remove();
-    }
-    
-    playerChoice = "paper";
-    const resultBox = document.createElement("div");
-    document.body.appendChild(resultBox);
-    resultBox.setAttribute("id","resultBox");
-    resultBox.textContent = playRound(playerChoice, getComputerChoice());
-    let scoreBox = document.getElementById("scoreBox");
-    scoreBox.textContent = "Score: ";
-    scoreBox.textContent += ("Player: " + playerScore + " Computer: " + computerScore);
-    console.log(checkForWinCondition(playerScore,computerScore));
-    if(checkForWinCondition(playerScore,computerScore) === true) {
-        console.log("winMessageBox appeared");
-        const winMessageBox = document.createElement("div");
-        document.body.appendChild(winMessageBox);
-        winMessageBox.setAttribute("id" , "winMessageBox");
-        if(playerScore > computerScore) {
-            winMessageBox.textContent = "Game won!";
-        }
-        else {
-            winMessageBox.textContent = "Game lost!";
-        }
-    }
+    playRound("paper");
 });
 
 
 scissorsButton.addEventListener("click", function() {
-    if(playerScore === 5 || computerScore === 5) {
-        startNewGame();
-    }
-
-    if(document.body.contains(document.getElementById("resultBox"))) {
-        document.getElementById("resultBox").remove();
-    }
-    
-    playerChoice = "scissors";
-    const resultBox = document.createElement("div");
-    document.body.appendChild(resultBox);
-    resultBox.setAttribute("id","resultBox");
-    resultBox.textContent = playRound(playerChoice, getComputerChoice());
-    let scoreBox = document.getElementById("scoreBox");
-    scoreBox.textContent = "Score: ";
-    scoreBox.textContent += ("Player: " + playerScore + " Computer: " + computerScore);
-    console.log(checkForWinCondition(playerScore,computerScore));
-    if(checkForWinCondition(playerScore,computerScore) === true) {
-        console.log("winMessageBox appeared");
-        const winMessageBox = document.createElement("div");
-        document.body.appendChild(winMessageBox);
-        winMessageBox.setAttribute("id" , "winMessageBox");
-        if(playerScore > computerScore) {
-            winMessageBox.textContent = "Game won!";
-        }
-        else {
-            winMessageBox.textContent = "Game lost!";
-        }
-    }
+    playRound("scissors");
 });
 
 
