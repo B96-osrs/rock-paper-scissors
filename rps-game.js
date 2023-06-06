@@ -4,27 +4,17 @@ const playOption = ["rock","paper","scissors"];
 let playerChoice;
 let computerChoice;
 
+let rockButton = document.getElementById("rock-button");
+let paperButton = document.getElementById("paper-button");
+let scissorsButton = document.getElementById("scissors-button");
+
+
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random()*(2 - 0 +1));
-    console.log("Computer picked: " + playOption[randomNumber]);
-    console.log("=========================");
     return playOption[randomNumber]; 
 }
 
-function getPlayerChoice() {
-    let playerInput = prompt("Rock, Paper or Scissors?:");
-    playerInput = playerInput.toLowerCase();
-    if(playOption.includes(playerInput)) {
-            console.log("Player picked: " + playerInput);
-            console.log("=========================")
-        return playerInput;
-    }
-    else {
-        getPlayerChoice();
-    }
-
-}
 
 function determineRoundWinner(playerSelection, computerSelection) {
     if(playerSelection === computerSelection) {
@@ -101,9 +91,14 @@ function displayRoundResult() {
 }
 
 function updateScore() {
-    let scoreBox = document.getElementById("scoreBox");
-    scoreBox.textContent = "Score: ";
-    scoreBox.textContent += ("You: " + playerScore + " Computer: " + computerScore);
+    // let scoreBox = document.getElementById("score-box");
+    // scoreBox.textContent = "Score: ";
+    // scoreBox.textContent += ("You: " + playerScore + " Computer: " + computerScore);
+
+    let playerScoreBox = document.getElementById("player-score-box");
+    let computerScoreBox = document.getElementById("computer-score-box");
+    playerScoreBox.textContent = playerScore;
+    computerScoreBox.textContent = computerScore;
 
 }
 

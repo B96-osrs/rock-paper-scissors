@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    border-style: solid;
+}
+#header-box {
+    font-size: 32px;
+    display: flex;
+    flex:1;
+    color:white;
+    justify-content: space-around;
+}
+
+#player-score-box , #player-name-box{
+    display: flex;
+    padding-left: 32px;
+    background-color: #3882F6;
+    padding: 48px;
+
+}
+#player-name-box {
+    display: flex;
+    flex: 0.5;
+    border-right-style: dotted;
+}
+
+#computer-name-box {
+    display: flex;
+    flex:0.5;
+    border-left-style: dotted;
+}
+
+#computer-score-box , #computer-name-box{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 32px;
+    background-color: #880808;
+    padding: 48px;
+
+}
+
+#pick-container {
+    display: flex;
+    flex:4;
+    justify-content: space-around;
+}
+
+#button-container {
+    display: flex;
+    flex:1;
+    justify-content: space-around;
+    border-top-style: solid;
+}
+#rock-button, #paper-button, #scissors-button{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#user-pick {
+    display: flex;
+    flex: 1;
+    background-color: #5693f5;
+    border-top-style: solid;
+    height: auto;
+}
+
+#computer-pick {
+    display: flex;
+    flex: 1;
+    background-color: #852020;
+    border-top-style: solid;
+    height: auto;
+}
+
+#resultBox {
+    display: flex;
+    flex:1;
+}
+
+#winMessageBox {
+    display: flex;
+    flex: 1;
+}

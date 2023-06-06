@@ -2,10 +2,26 @@
 <html>
 <head>
   <script src="rps-game.js" defer></script>
+  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <title>rock paper scissors</title>
 </head>
 <body>
-<div id="scoreBox">Score:</div>
+  <div id="header-box">
+    <div id="player-name-box">You</div>
+    <div id="player-score-box"></div>
+    <div id="computer-score-box"></div>
+    <div id="computer-name-box">Computer</div>
+  </div>
+  <div id="pick-container">
+    <div id="user-pick"></div>
+    <div id="computer-pick"></div>
+  </div>
+
+  <div id="button-container">
+    <button id="rock-button">Rock</button>
+    <button id="paper-button">Paper</button>
+    <button id="scissors-button">Scissors</button>
+  </div>
 </body>
 </html>
