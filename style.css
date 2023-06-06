@@ -40,6 +40,12 @@ body {
 
 }
 
+#computer-score-box , #player-score-box {
+    font-size: 48px;
+    font-weight: 800;
+    
+}
+
 #pick-container {
     display: flex;
     flex:4;
