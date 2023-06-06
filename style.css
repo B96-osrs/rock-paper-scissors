@@ -86,9 +86,18 @@ body {
 #resultBox {
     display: flex;
     flex:1;
+    font-size: 24px;
+    font-weight: 800;
+    background-color: grey;
+    color: white;
+    justify-content: center;
+    align-items: center;
 }
 
 #winMessageBox {
-    display: flex;
-    flex: 1;
+    display: inline;
+    font-size: 48px;
+    font-weight: 800;
+    text-align: center;
+    color:white;
 }

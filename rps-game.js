@@ -23,28 +23,28 @@ function determineRoundWinner(playerSelection, computerSelection) {
     //lose conditions for player
     else if(playerSelection === playOption[0] && computerSelection === playOption[1]) {
         ++computerScore;
-        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     else if(playerSelection === playOption[2] && computerSelection === playOption[0]) {
         ++computerScore;
-        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     else if(playerSelection === playOption[1] && computerSelection === playOption[2]) {
         ++computerScore;
-        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     //win conditions for player
     else if(playerSelection === playOption[1] && computerSelection === playOption[0]) {
         ++playerScore;
-        return ("You Win! " + playerSelection + " beats " + computerSelection);
+        return ("You win! " + playerSelection + " beats " + computerSelection);
     }
     else if(playerSelection === playOption[0] && computerSelection === playOption[2]) {
         ++playerScore;
-        return ("You Win! " + playerSelection + " beats " + computerSelection);
+        return ("You win! " + playerSelection + " beats " + computerSelection);
     }
     else if(playerSelection === playOption[2] && computerSelection === playOption[1]) {
         ++computerScore;
-        return ("You Lose! " + computerSelection + " beats " + playerSelection);
+        return ("You wose! " + computerSelection + " beats " + playerSelection);
     }
     else {
         console.log("no case");
@@ -70,13 +70,18 @@ function startNewGame() {
 
 function displayEndResult() {
 
-    const winMessageBox = document.createElement("div");
-    document.body.appendChild(winMessageBox);
+    const winMessageBox = document.createElement("span");
+    const targetBox = document.getElementById("user-pick");
+    // targetBox.after(winMessageBox);
+    document.body.prepend(winMessageBox);
+
     winMessageBox.setAttribute("id" , "winMessageBox");
     if(playerScore > computerScore) {
+        winMessageBox.style.backgroundColor = "green";
         winMessageBox.textContent = "Game won!";
     }
     else {
+        winMessageBox.style.backgroundColor = "orange";
         winMessageBox.textContent = "Game lost!";
     }
 
