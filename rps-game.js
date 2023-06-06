@@ -8,11 +8,23 @@ let rockButton = document.getElementById("rock-button");
 let paperButton = document.getElementById("paper-button");
 let scissorsButton = document.getElementById("scissors-button");
 
+let delayInMilliseconds = 400;
+
+
 
 
 function getComputerChoice() {
+
     let randomNumber = Math.floor(Math.random()*(2 - 0 +1));
+    const computerPickBox = document.getElementById("computer-pick");
+    computerPickBox.textContent ="";
+    setTimeout(() => {
+        computerPickBox.textContent = playOption[randomNumber].toString().toUpperCase();     
+    }, delayInMilliseconds);
+
     return playOption[randomNumber]; 
+        
+    
 }
 
 
@@ -69,7 +81,7 @@ function startNewGame() {
 }
 
 function displayEndResult() {
-
+    setTimeout(() => {
     const winMessageBox = document.createElement("span");
     const targetBox = document.getElementById("user-pick");
     // targetBox.after(winMessageBox);
@@ -84,6 +96,7 @@ function displayEndResult() {
         winMessageBox.style.backgroundColor = "orange";
         winMessageBox.textContent = "Game lost!";
     }
+    }, delayInMilliseconds);
 
 }
 
@@ -126,17 +139,25 @@ function playRound(buttonChoice) {
 
 
 rockButton.addEventListener("click", function() {
-    playRound("rock");
+    const userPickBox = document.getElementById("user-pick");
+    userPickBox.textContent ="ROCK";
 
+        playRound("rock");
 });
 
 paperButton.addEventListener("click", function() {
-    playRound("paper");
+    const userPickBox = document.getElementById("user-pick");
+    userPickBox.textContent ="PAPER";
+
+        playRound("paper");
 });
 
 
 scissorsButton.addEventListener("click", function() {
-    playRound("scissors");
+    const userPickBox = document.getElementById("user-pick");
+    userPickBox.textContent ="SCISSORS";
+
+        playRound("scissors");     
 });
 
 

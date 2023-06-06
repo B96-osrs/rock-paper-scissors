@@ -2,14 +2,14 @@ body {
     display: flex;
     flex-direction: column;
     height: 60vh;
-    border-style: solid;
+    padding: 8px;
+    margin: 0;
 }
 #header-box {
     font-size: 32px;
     display: flex;
     flex:1;
     color:white;
-    justify-content: space-around;
 }
 
 #player-score-box , #player-name-box{
@@ -63,16 +63,24 @@ body {
     flex: 1;
     align-items: center;
     justify-content: center;
+    font-size: 36px;
+    font-weight: 800;
+    background-color: 	#a98600;
+    color:white;
+
 }
-
-
-
 #user-pick {
     display: flex;
     flex: 1;
     background-color: #5693f5;
     border-top-style: solid;
     height: auto;
+    font-size: 64px;
+    color:white;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+
 }
 
 #computer-pick {
@@ -81,6 +89,12 @@ body {
     background-color: #852020;
     border-top-style: solid;
     height: auto;
+    font-size: 64px;
+    color:white;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(1turn);
 }
 
 #resultBox {
@@ -100,4 +114,12 @@ body {
     font-weight: 800;
     text-align: center;
     color:white;
+
+}
+
+button:hover {
+    border-color: rgb(111, 196, 63);
+    border-width: 6px;
+    box-shadow: none;
+    transform: scale(1.1);
 }
