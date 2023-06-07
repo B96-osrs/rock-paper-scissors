@@ -35,28 +35,22 @@ function determineRoundWinner(playerSelection, computerSelection) {
     //lose conditions for player
     else if(playerSelection === playOption[0] && computerSelection === playOption[1]) {
         ++computerScore;
-        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     else if(playerSelection === playOption[2] && computerSelection === playOption[0]) {
         ++computerScore;
-        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     else if(playerSelection === playOption[1] && computerSelection === playOption[2]) {
         ++computerScore;
-        return ("You lose! " + computerSelection + " beats " + playerSelection);
     }
     //win conditions for player
     else if(playerSelection === playOption[1] && computerSelection === playOption[0]) {
         ++playerScore;
-        return ("You win! " + playerSelection + " beats " + computerSelection);
     }
     else if(playerSelection === playOption[0] && computerSelection === playOption[2]) {
         ++playerScore;
-        return ("You win! " + playerSelection + " beats " + computerSelection);
     }
     else if(playerSelection === playOption[2] && computerSelection === playOption[1]) {
         ++computerScore;
-        return ("You wose! " + computerSelection + " beats " + playerSelection);
     }
     else {
         console.log("no case");
@@ -84,7 +78,6 @@ function displayEndResult() {
     setTimeout(() => {
     const winMessageBox = document.createElement("span");
     const targetBox = document.getElementById("user-pick");
-    // targetBox.after(winMessageBox);
     document.body.prepend(winMessageBox);
 
     winMessageBox.setAttribute("id" , "winMessageBox");
@@ -100,35 +93,20 @@ function displayEndResult() {
 
 }
 
-function displayRoundResult() {
-    const resultBox = document.createElement("div");
-    document.body.appendChild(resultBox);
-    resultBox.setAttribute("id","resultBox");
-    resultBox.textContent = determineRoundWinner(playerChoice, getComputerChoice());
-
-}
 
 function updateScore() {
-    // let scoreBox = document.getElementById("score-box");
-    // scoreBox.textContent = "Score: ";
-    // scoreBox.textContent += ("You: " + playerScore + " Computer: " + computerScore);
-
     let playerScoreBox = document.getElementById("player-score-box");
     let computerScoreBox = document.getElementById("computer-score-box");
     playerScoreBox.textContent = playerScore;
     computerScoreBox.textContent = computerScore;
-
 }
 
 function playRound(buttonChoice) {
     if(playerScore === 5 || computerScore === 5) {
         startNewGame();
-    }
-    if(document.body.contains(document.getElementById("resultBox"))) {
-        document.getElementById("resultBox").remove();
-    }   
+    }  
     playerChoice = buttonChoice;
-    displayRoundResult();
+    determineRoundWinner(playerChoice, getComputerChoice());
     updateScore();
     if(checkForWinCondition(playerScore,computerScore) === true) {
         displayEndResult();
